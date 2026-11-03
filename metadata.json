@@ -1,0 +1,19 @@
+{
+  "name": "perseus-parallel",
+  "description": "Greek-English parallel texts aligned by Perseus citation: the Greek historians (Herodotus, Thucydides, Pausanias 1-5, Xenophon's Anabasis, Hellenica and Cyropaedia, Diogenes Laertius) section by section, and the New Testament (Westcott and Hort with the World English Bible) verse by verse; cleaned, split by held-out books, for training translation models.",
+  "source": {
+    "name": "Perseus Digital Library, canonical-greekLit, TEI XML",
+    "repository": "https://github.com/PerseusDL/canonical-greekLit",
+    "commit": "70427323b61267cdcd0256b9b02009c23392de07",
+    "files": "sources.json (path and SHA-256 of each source file, verified by clean.py)",
+    "license": "Perseus's TEI texts are released under CC BY-SA 4.0; the adapted texts are released under the same licence (LICENSE-TEXT.md, with the copyright check per volume: Pausanias's translation is public domain in the United States but not in countries with terms of life plus 70 years until the end of 2033 and 2034)."
+  },
+  "version": "2026-11-03",
+  "maintainer": "davidbarkhuizen",
+  "format": "JSON Lines, UTF-8: one pair a line, {work, ref, split, grc, eng}, in text order",
+  "files": {
+    "data/histories.jsonl": "d1fbe9e52340543822e74a30fcbe64945213d88c95f273f2d7696523731ff978",
+    "data/new-testament.jsonl": "0750b9a6764e56a16c95b79a213f2ef3ad8731fb975998830ec3cbcb9cedab8e"
+  },
+  "built_by": "clean.py"
+}

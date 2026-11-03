@@ -1,0 +1,109 @@
+{
+  "file": "data/new-testament.jsonl",
+  "sha256": "0750b9a6764e56a16c95b79a213f2ef3ad8731fb975998830ec3cbcb9cedab8e",
+  "corpus": "new-testament",
+  "format": "JSON Lines, UTF-8: one pair a line, {work, ref, split, grc, eng}, in text order",
+  "pairs": 7908,
+  "splits": {
+    "test": 603,
+    "train": 6606,
+    "validation": 699
+  },
+  "works": {
+    "matthew": {
+      "train": 1065
+    },
+    "mark": {
+      "train": 672
+    },
+    "luke": {
+      "train": 1145
+    },
+    "john": {
+      "test": 400,
+      "validation": 477
+    },
+    "acts": {
+      "train": 1000
+    },
+    "romans": {
+      "test": 203,
+      "validation": 222
+    },
+    "1corinthians": {
+      "train": 428
+    },
+    "2corinthians": {
+      "train": 256
+    },
+    "galatians": {
+      "train": 149
+    },
+    "ephesians": {
+      "train": 155
+    },
+    "philippians": {
+      "train": 102
+    },
+    "colossians": {
+      "train": 95
+    },
+    "1thessalonians": {
+      "train": 88
+    },
+    "2thessalonians": {
+      "train": 47
+    },
+    "1timothy": {
+      "train": 113
+    },
+    "2timothy": {
+      "train": 83
+    },
+    "titus": {
+      "train": 46
+    },
+    "philemon": {
+      "train": 25
+    },
+    "hebrews": {
+      "train": 303
+    },
+    "james": {
+      "train": 108
+    },
+    "1peter": {
+      "train": 104
+    },
+    "2peter": {
+      "train": 61
+    },
+    "1john": {
+      "train": 105
+    },
+    "2john": {
+      "train": 13
+    },
+    "3john": {
+      "train": 14
+    },
+    "jude": {
+      "train": 25
+    },
+    "revelation": {
+      "train": 404
+    }
+  },
+  "characters": {
+    "grc": 828420,
+    "eng": 919161
+  },
+  "vocabulary": {
+    "grc": " (),-.;·ΐΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩάέήίΰαβγδεζηθικλμνξοπρςστυφχψωϊϋόύώἀἁἂἃἄἅἆἈἉἋἌἍἎἐἑἓἔἕἘἙἛἜἝἠἡἢἣἤἥἦἧἨἩἪἫἬἭἮἰἱἳἴἵἶἷἸἹἼἽὀὁὂὃὄὅὈὉὋὌὍὐὑὒὓὔὕὖὗὙὝὟὠὡὢὤὥὦὧὨὩὪὬὭὮὯὰὲὴὶὸὺὼᾁᾄᾐᾑᾔᾖᾗᾠᾧᾳᾴᾶᾷῃῄῆῇῒῖῢῤῥῦῬῳῴῶῷ—’",
+    "eng": " !\"'(),-.:;?ABCDEFGHIJKLMNOPQRSTUVWYZabcdefghijklmnopqrstuvwxyz"
+  },
+  "longest": {
+    "grc": 333,
+    "eng": 348
+  }
+}
