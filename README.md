@@ -131,7 +131,7 @@ the first part is validation, the rest test.
 | new-testament | 6,606 | 699 | 603 |
 
 `report.md` lists the held-out pairs whose Greek shares at least half its 8-letter shingles with a
-train pair's: none in the histories, 11 in the New Testament (John's parallels with the synoptics,
+train pair's: none in the histories, 10 in the New Testament (John's parallels with the synoptics,
 and Romans's quotations shared with other letters, such as Genesis 15.6 in Romans 4.3 and James
 2.23).
 
