@@ -37,7 +37,7 @@ in the public domain everywhere.
 **Not included:** Pausanias, whose Loeb translation (W. H. S. Jones, died 1963, and H. A. Ormerod,
 died 1964) is in the public domain in the United States for its volumes of 1918 and 1926, but
 under terms of life plus 70 years only from 2034 and 2035; its later volumes (1933, 1935) were not
-checked. The first tag, `v2026-11-03`, held its Books 1-5; they were dropped at `v2026-11-03.1`.
+checked. The first tag, `v2026-11-03`, held its Books 1-5; they were dropped at `v2026-11-03.2`.
 
 ### Greek editions
 

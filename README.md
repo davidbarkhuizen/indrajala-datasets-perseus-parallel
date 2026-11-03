@@ -156,7 +156,7 @@ this repo's own packaging version.
   which also records the copyright check of each translation and edition.
 
 The first tag, `v2026-11-03`, also held Pausanias (Books 1-5) and the New Testament (Westcott and
-Hort with the World English Bible). They were dropped at `v2026-11-03.1`: Pausanias's translation
+Hort with the World English Bible). They were dropped at `v2026-11-03.2` (whose predecessor, `v2026-11-03.1`, still carried the New Testament's stale files by mistake; use `v2026-11-03.2` or later): Pausanias's translation
 is still in copyright under terms of life plus 70 years, and the World English Bible translates a
 different Greek text (the Majority Text) from the one here.
 - **This repo's packaging** (this README, `clean.py`, `sources.json`, `metadata.json`, the layout)

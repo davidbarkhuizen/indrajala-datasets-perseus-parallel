@@ -8,7 +8,7 @@
     "files": "sources.json (path and SHA-256 of each source file, verified by clean.py)",
     "license": "Perseus's TEI texts are released under CC BY-SA 4.0; the adapted texts are released under the same licence (LICENSE-TEXT.md, with the copyright check per volume)."
   },
-  "version": "2026-11-03.1",
+  "version": "2026-11-03.2",
   "maintainer": "davidbarkhuizen",
   "format": "JSON Lines, UTF-8: one pair a line, {work, ref, split, grc, eng}, in text order",
   "files": {
