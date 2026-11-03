@@ -1,13 +1,13 @@
 {
   "file": "data/histories.jsonl",
-  "sha256": "d1fbe9e52340543822e74a30fcbe64945213d88c95f273f2d7696523731ff978",
+  "sha256": "24c12bb58071382f10c7f98c5b0c7baf2888b5d55ef6668be2342a537a9f3334",
   "corpus": "histories",
   "format": "JSON Lines, UTF-8: one pair a line, {work, ref, split, grc, eng}, in text order",
-  "pairs": 14602,
+  "pairs": 13122,
   "splits": {
-    "test": 781,
-    "train": 12922,
-    "validation": 899
+    "test": 632,
+    "train": 11753,
+    "validation": 737
   },
   "works": {
     "herodotus": {
@@ -19,11 +19,6 @@
       "test": 195,
       "train": 3194,
       "validation": 196
-    },
-    "pausanias": {
-      "test": 149,
-      "train": 1169,
-      "validation": 162
     },
     "anabasis": {
       "test": 67,
@@ -47,11 +42,11 @@
     }
   },
   "characters": {
-    "grc": 4749649,
-    "eng": 5760319
+    "grc": 4079937,
+    "eng": 5003708
   },
   "vocabulary": {
-    "grc": " \"(),-.;ILVX·ΆΎΐΑΒΓΔΕΖΗΘΚΛΜΝΞΟΠΡΣΤΥΦΧΨάέήίΰαβγδεζηθικλμνξοπρςστυφχψωϊϋόύώἀἁἂἃἄἅἆἈἉἋἌἍἎἐἑἓἔἕἘἙἛἜἝἠἡἢἣἤἥἦἧἨἩἪἬἭἮἰἱἲἳἴἵἶἷἸἹἺἼἽἾὀὁὂὃὄὅὈὉὋὌὍὐὑὒὓὔὕὖὗὙὝὠὡὢὣὤὥὦὧὨὩὬὭὮὯὰὲὴὶὸὺὼᾀᾄᾅᾆᾍᾐᾑᾔᾕᾖᾗᾠᾤᾦᾧᾨᾳᾴᾶᾷῂῃῄῆῇῒῖῗῤῥῦῬῲῳῴῶῷ—’“”′",
+    "grc": " \"(),-.;ILVX·ΆΎΐΑΒΓΔΕΖΗΘΚΛΜΝΞΟΠΣΤΥΦΧΨάέήίΰαβγδεζηθικλμνξοπρςστυφχψωϊϋόύώἀἁἂἃἄἅἆἈἉἋἌἍἎἐἑἓἔἕἘἙἛἜἝἠἡἢἣἤἥἦἧἨἩἪἬἭἮἰἱἲἳἴἵἶἷἸἹἺἼἽἾὀὁὂὃὄὅὈὉὋὌὍὐὑὒὓὔὕὖὗὙὝὠὡὢὣὤὥὦὧὨὩὬὭὮὯὰὲὴὶὸὺὼᾀᾄᾅᾆᾍᾐᾑᾔᾕᾖᾗᾠᾤᾦᾧᾨᾳᾴᾶᾷῂῃῄῆῇῒῖῗῤῥῦῬῲῳῴῶῷ—’“”′",
     "eng": " !\"'(),-.0123456789:;>?ABCDEFGHIJKLMNOPQRSTUVWXYZ[]abcdefghijklmnopqrstuvwxyz"
   },
   "longest": {

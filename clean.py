@@ -4,11 +4,11 @@ texts, fetched at a pinned commit of PerseusDL/canonical-greekLit and checksum-v
 (sources.json), aligned by citation, cleaned, split and reported:
 
 - data/histories.jsonl: Herodotus (Godley), Thucydides (the translation that aligns best of the
-  candidates, measured here), Pausanias (Books 1-5, Jones and Ormerod's volumes of 1918 and 1926),
-  Xenophon's Anabasis and Hellenica (Brownson) and Cyropaedia (Miller), Diogenes Laertius (Hicks);
-  aligned section by section (book.chapter.section).
-- data/new-testament.jsonl: the 27 books, Westcott and Hort's Greek with the World English Bible,
-  verse by verse (chapter.verse).
+  candidates, measured here), Xenophon's Anabasis and Hellenica (Brownson) and Cyropaedia (Miller),
+  Diogenes Laertius (Hicks); aligned section by section (book.chapter.section).
+- data/lives.jsonl: Plutarch's Parallel Lives with their comparisons, Perrin's Greek and English
+  (Loeb, 1914-26), 66 works; aligned section by section (chapter.section; book.chapter.section in
+  Agis and Cleomenes and the Gracchi).
 - data/*.jsonl.metadata.json: each file's checksum, counts and vocabularies;
 - report.md: the alignment report (pairs, lengths, what didn't align, the pairs too long for a
   window, length-ratio outliers, near-duplicates across the split, the vocabularies).
@@ -33,9 +33,10 @@ English: normalized to ASCII (accents stripped, dashes as - and --, quotes strai
 NFKD can't reduce, other than those spelled out (SPELLED), is an error, not a silent change.
 Greek: Unicode NFC, accents and breathings kept; the elision marks unified as U+2019.
 
-Splits hold out a whole book of each work, a different book in each (Work.held_out), and in the New
-Testament John and Romans; the held-out book's chapters, in order, are split in two at the middle
-pair: the first part validation, the rest test. Everything else is train.
+Splits hold out a whole book of each history, a different book in each (Work.held_out), and whole
+Lives in Plutarch, each with its pair and their comparison (LIVES_HELD_OUT); a held-out book's or
+Life's chapters, in order, are split in two at the middle pair: the first part validation, the rest
+test. Everything else is train.
 
     python3 clean.py                  # fetch, verify, align, clean, write data/ and report.md
     python3 clean.py --check          # the same, then compare with the committed files, byte for byte
@@ -63,7 +64,7 @@ COMMIT = "70427323b61267cdcd0256b9b02009c23392de07"
 BASE_URL = f"https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/{COMMIT}/"
 HERE = os.path.dirname(os.path.abspath(__file__))
 SOURCES = os.path.join(HERE, "sources.json")
-OUT = {"histories": "data/histories.jsonl", "new-testament": "data/new-testament.jsonl"}
+OUT = {"histories": "data/histories.jsonl", "lives": "data/lives.jsonl"}
 REPORT = "report.md"
 
 TEI = "{http://www.tei-c.org/ns/1.0}"
@@ -165,15 +166,6 @@ HISTORIES = [
     ),
     Work(
         "histories",
-        "pausanias",
-        "Pausanias, Description of Greece",
-        perseus("tlg0525.tlg001", "perseus-grc2"),
-        (perseus("tlg0525.tlg001", "perseus-eng2"),),
-        books=("1", "2", "3", "4", "5"),
-        held_out="2",
-    ),
-    Work(
-        "histories",
         "anabasis",
         "Xenophon, Anabasis",
         perseus("tlg0032.tlg006", "perseus-grc2"),
@@ -206,60 +198,102 @@ HISTORIES = [
     ),
 ]
 
-NT_BOOKS = [
-    "Matthew",
-    "Mark",
-    "Luke",
-    "John",
-    "Acts",
-    "Romans",
-    "1 Corinthians",
-    "2 Corinthians",
-    "Galatians",
-    "Ephesians",
-    "Philippians",
-    "Colossians",
-    "1 Thessalonians",
-    "2 Thessalonians",
-    "1 Timothy",
-    "2 Timothy",
-    "Titus",
-    "Philemon",
-    "Hebrews",
-    "James",
-    "1 Peter",
-    "2 Peter",
-    "1 John",
-    "2 John",
-    "3 John",
-    "Jude",
-    "Revelation",
+# Plutarch's Lives in Perrin's Loeb (both texts his): (work number, name, title); the files are
+# perseus-grc2 and perseus-eng2 but where VERSIONS says otherwise
+LIVES_TABLE = [
+    (1, "theseus", "Theseus"),
+    (2, "romulus", "Romulus"),
+    (3, "theseus-romulus", "Comparison of Theseus and Romulus"),
+    (4, "lycurgus", "Lycurgus"),
+    (5, "numa", "Numa"),
+    (6, "lycurgus-numa", "Comparison of Lycurgus and Numa"),
+    (7, "solon", "Solon"),
+    (8, "publicola", "Publicola"),
+    (9, "solon-publicola", "Comparison of Solon and Publicola"),
+    (10, "themistocles", "Themistocles"),
+    (11, "camillus", "Camillus"),
+    (12, "pericles", "Pericles"),
+    (13, "fabius", "Fabius Maximus"),
+    (14, "pericles-fabius", "Comparison of Pericles and Fabius Maximus"),
+    (15, "alcibiades", "Alcibiades"),
+    (16, "coriolanus", "Coriolanus"),
+    (17, "alcibiades-coriolanus", "Comparison of Alcibiades and Coriolanus"),
+    (18, "timoleon", "Timoleon"),
+    (19, "aemilius", "Aemilius Paulus"),
+    (20, "timoleon-aemilius", "Comparison of Timoleon and Aemilius Paulus"),
+    (21, "pelopidas", "Pelopidas"),
+    (22, "marcellus", "Marcellus"),
+    (23, "pelopidas-marcellus", "Comparison of Pelopidas and Marcellus"),
+    (24, "aristides", "Aristides"),
+    (25, "cato-major", "Marcus Cato"),
+    (26, "aristides-cato", "Comparison of Aristides and Cato"),
+    (27, "philopoemen", "Philopoemen"),
+    (28, "flamininus", "Titus Flamininus"),
+    (29, "philopoemen-flamininus", "Comparison of Philopoemen and Flamininus"),
+    (30, "pyrrhus", "Pyrrhus"),
+    (31, "marius", "Caius Marius"),
+    (32, "lysander", "Lysander"),
+    (33, "sulla", "Sulla"),
+    (34, "lysander-sulla", "Comparison of Lysander and Sulla"),
+    (35, "cimon", "Cimon"),
+    (36, "lucullus", "Lucullus"),
+    (37, "cimon-lucullus", "Comparison of Cimon and Lucullus"),
+    (38, "nicias", "Nicias"),
+    (39, "crassus", "Crassus"),
+    (40, "nicias-crassus", "Comparison of Nicias and Crassus"),
+    (41, "eumenes", "Eumenes"),
+    (42, "sertorius", "Sertorius"),
+    (43, "sertorius-eumenes", "Comparison of Sertorius and Eumenes"),
+    (44, "agesilaus", "Agesilaus"),
+    (45, "pompey", "Pompey"),
+    (46, "agesilaus-pompey", "Comparison of Agesilaus and Pompey"),
+    (47, "alexander", "Alexander"),
+    (48, "caesar", "Caesar"),
+    (49, "phocion", "Phocion"),
+    (50, "cato-minor", "Cato the Younger"),
+    (51, "agis-cleomenes", "Agis and Cleomenes"),
+    (52, "gracchi", "Tiberius and Caius Gracchus"),
+    (53, "agis-cleomenes-gracchi", "Comparison of Agis and Cleomenes with the Gracchi"),
+    (54, "demosthenes", "Demosthenes"),
+    (55, "cicero", "Cicero"),
+    (56, "demosthenes-cicero", "Comparison of Demosthenes and Cicero"),
+    (57, "demetrius", "Demetrius"),
+    (58, "antony", "Antony"),
+    (59, "demetrius-antony", "Comparison of Demetrius and Antony"),
+    (60, "dion", "Dion"),
+    (61, "brutus", "Brutus"),
+    (62, "dion-brutus", "Comparison of Dion and Brutus"),
+    (63, "aratus", "Aratus"),
+    (64, "artaxerxes", "Artaxerxes"),
+    (65, "galba", "Galba"),
+    (66, "otho", "Otho"),
 ]
-NT_HELD_OUT = {"John", "Romans"}
-# where Westcott and Hort's verses and the World English Bible's are numbered differently: (Greek
-# renames, English renames)
-NT_RENAMES: dict[str, tuple[dict[str, str], dict[str, str]]] = {
-    # the doxology: Westcott and Hort's 16.25-27, the WEB's 14.24-26
-    "Romans": ({}, {"14.24": "16.25", "14.25": "16.26", "14.26": "16.27"}),
-    # Westcott and Hort's 13.12 is the WEB's 13.12-13, their 13.13 its 13.14
-    "2 Corinthians": ({}, {"13.13": "13.12", "13.14": "13.13"}),
-    # Westcott and Hort's 1.14-15 is the WEB's 1.14
-    "3 John": ({"1.15": "1.14"}, {}),
-    # Westcott and Hort's 12.18 opens the WEB's 13.1
-    "Revelation": ({"12.18": "13.1"}, {}),
+# the files' versions where they aren't grc2 and eng2: (Greek, English)
+VERSIONS = {1: ("perseus-grc2", "perseus-eng3"), 51: ("perseus-grc1", "perseus-eng1"), 52: ("perseus-grc1", "perseus-eng1")}
+# held out whole, each with its pair and their comparison: Pericles and Fabius Maximus, Timoleon and
+# Aemilius Paulus
+LIVES_HELD_OUT = {12, 13, 14, 18, 19, 20}
+# where Perrin's Greek and English number a section differently: (Greek renames, English renames)
+LIVES_RENAMES: dict[int, tuple[dict[str, str], dict[str, str]]] = {
+    7: ({}, {"11.11": "11.1"}),  # Solon: the English's 11.11 for 11.1
+    11: (
+        {"6.4": "6.3"},
+        {"38.4": "38.3"},
+    ),  # Camillus: the English's 6.3 is the Greek's 6.3-4, the Greek's 38.3 the English's 38.3-4
+    57: ({}, {"33.5": "33.4"}),  # Demetrius: the English's 33.5 for 33.4
 }
-NEW_TESTAMENT = [
+LIVES = [
     Work(
-        "new-testament",
-        title.lower().replace(" ", ""),
-        title,
-        perseus(f"tlg0031.tlg{i:03d}", "perseus-grc2"),
-        (perseus(f"tlg0031.tlg{i:03d}", "perseus-eng2"),),
-        held_out="*" if title in NT_HELD_OUT else None,
-        greek_renames=NT_RENAMES.get(title, ({}, {}))[0],
-        english_renames=NT_RENAMES.get(title, ({}, {}))[1],
+        "lives",
+        name,
+        f"Plutarch, {title}",
+        perseus(f"tlg0007.tlg{n:03d}", VERSIONS.get(n, ("perseus-grc2", "perseus-eng2"))[0]),
+        (perseus(f"tlg0007.tlg{n:03d}", VERSIONS.get(n, ("perseus-grc2", "perseus-eng2"))[1]),),
+        held_out="*" if n in LIVES_HELD_OUT else None,
+        greek_renames=LIVES_RENAMES.get(n, ({}, {}))[0],
+        english_renames=LIVES_RENAMES.get(n, ({}, {}))[1],
     )
-    for i, title in enumerate(NT_BOOKS, start=1)
+    for n, name, title in LIVES_TABLE
 ]
 
 # the sources' typos and stray marks, fixed in the cleaned text (sigla already removed) where each
@@ -278,17 +312,20 @@ ERRATA = [
     ("diogenes", "4.3.20", "eng", "him:>", "him:"),
     ("diogenes", "7.1.14", "grc", "3μέσου", "μέσου"),
     ("diogenes", "8.2.76", "grc", "ἔχθει.>", "ἔχθει."),
-    ("colossians", "3.10", "grc", "ϝέον", "νέον"),
-    ("hebrews", "8.5", "grc", "πάντα gt κατὰ", "πάντα κατὰ"),
+    ("romulus", "8.7", "grc", " (FHG III 78)", ""),  # an editor's citation in the text
+    ("alexander", "54.1", "grc", "ὁ ῝ Ἕρμιππός", "ὁ Ἕρμιππός"),
+    ("demetrius", "36.4", "grc", "ϝεώτερα", "νεώτερα"),
+    ("antony", "39.5", "grc", "sὁ δὲ", "ὁ δὲ"),
+    ("antony", "67.4", "grc", "γυ˙ ναῖκες", "γυναῖκες"),
 ]
 
 # the editions' sigla, removed from the Greek with their content kept: brackets for doubtful,
-# supplied or deleted words (Westcott and Hort's [ ] and double brackets, the angle brackets of
-# supplements), marks of lacunae (*, #), a stray rough-breathing quote mark and acute
+# supplied or deleted words ([ ], double brackets, the angle brackets of supplements), marks of
+# lacunae (*, #), a stray rough-breathing quote mark and acute
 GREEK_SIGLA = set("[]\u27e6\u27e7\u2329\u232a\u3008\u3009*#\u02bd\u00b4")
 # in the English, the marks of lacunae (Hicks's * *); the translators' [ ] are their own words, kept
 ENGLISH_SIGLA = set("*")
-WORKS = HISTORIES + NEW_TESTAMENT
+WORKS = HISTORIES + LIVES
 
 
 # ---------------------------------------------------------------- sources
@@ -649,7 +686,7 @@ def build_all(cache: str | None) -> tuple[dict[str, list[Pair]], str]:
     with open(SOURCES) as f:
         expected = json.load(f)
     report: list[str] = []
-    corpora: dict[str, list[Pair]] = {"histories": [], "new-testament": []}
+    corpora: dict[str, list[Pair]] = {"histories": [], "lives": []}
     unknown: Counter[str] = Counter()
     stray: Counter[str] = Counter()
     errata: dict[tuple[str, str], list[tuple[str, str, str, str, str]]] = defaultdict(list)

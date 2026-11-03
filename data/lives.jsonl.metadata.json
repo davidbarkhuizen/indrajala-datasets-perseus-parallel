@@ -1,0 +1,229 @@
+{
+  "file": "data/lives.jsonl",
+  "sha256": "d2f869e50aca0d27cc23df64be966e83bd9e0ac06784fc5deabf99b9c25ccc4e",
+  "corpus": "lives",
+  "format": "JSON Lines, UTF-8: one pair a line, {work, ref, split, grc, eng}, in text order",
+  "pairs": 9794,
+  "splits": {
+    "test": 446,
+    "train": 8841,
+    "validation": 507
+  },
+  "works": {
+    "theseus": {
+      "train": 132
+    },
+    "romulus": {
+      "train": 161
+    },
+    "theseus-romulus": {
+      "train": 18
+    },
+    "lycurgus": {
+      "train": 153
+    },
+    "numa": {
+      "train": 130
+    },
+    "lycurgus-numa": {
+      "train": 26
+    },
+    "solon": {
+      "train": 140
+    },
+    "publicola": {
+      "train": 103
+    },
+    "solon-publicola": {
+      "train": 16
+    },
+    "themistocles": {
+      "train": 136
+    },
+    "camillus": {
+      "train": 191
+    },
+    "pericles": {
+      "test": 89,
+      "validation": 92
+    },
+    "fabius": {
+      "test": 62,
+      "validation": 70
+    },
+    "pericles-fabius": {
+      "test": 5,
+      "validation": 8
+    },
+    "alcibiades": {
+      "train": 187
+    },
+    "coriolanus": {
+      "train": 165
+    },
+    "alcibiades-coriolanus": {
+      "train": 22
+    },
+    "timoleon": {
+      "test": 136,
+      "validation": 155
+    },
+    "aemilius": {
+      "test": 154,
+      "validation": 165
+    },
+    "timoleon-aemilius": {
+      "validation": 17
+    },
+    "pelopidas": {
+      "train": 170
+    },
+    "marcellus": {
+      "train": 153
+    },
+    "pelopidas-marcellus": {
+      "train": 15
+    },
+    "aristides": {
+      "train": 146
+    },
+    "cato-major": {
+      "train": 146
+    },
+    "aristides-cato": {
+      "train": 26
+    },
+    "philopoemen": {
+      "train": 112
+    },
+    "flamininus": {
+      "train": 108
+    },
+    "philopoemen-flamininus": {
+      "train": 9
+    },
+    "pyrrhus": {
+      "train": 194
+    },
+    "marius": {
+      "train": 234
+    },
+    "lysander": {
+      "train": 155
+    },
+    "sulla": {
+      "train": 204
+    },
+    "lysander-sulla": {
+      "train": 23
+    },
+    "cimon": {
+      "train": 109
+    },
+    "lucullus": {
+      "train": 253
+    },
+    "cimon-lucullus": {
+      "train": 18
+    },
+    "nicias": {
+      "train": 162
+    },
+    "crassus": {
+      "train": 193
+    },
+    "nicias-crassus": {
+      "train": 23
+    },
+    "eumenes": {
+      "train": 98
+    },
+    "sertorius": {
+      "train": 128
+    },
+    "sertorius-eumenes": {
+      "train": 7
+    },
+    "agesilaus": {
+      "train": 201
+    },
+    "pompey": {
+      "train": 392
+    },
+    "agesilaus-pompey": {
+      "train": 20
+    },
+    "alexander": {
+      "train": 377
+    },
+    "caesar": {
+      "train": 288
+    },
+    "phocion": {
+      "train": 148
+    },
+    "cato-minor": {
+      "train": 318
+    },
+    "agis-cleomenes": {
+      "train": 245
+    },
+    "gracchi": {
+      "train": 176
+    },
+    "agis-cleomenes-gracchi": {
+      "train": 19
+    },
+    "demosthenes": {
+      "train": 130
+    },
+    "cicero": {
+      "train": 227
+    },
+    "demosthenes-cicero": {
+      "train": 19
+    },
+    "demetrius": {
+      "train": 240
+    },
+    "antony": {
+      "train": 359
+    },
+    "demetrius-antony": {
+      "train": 17
+    },
+    "dion": {
+      "train": 388
+    },
+    "brutus": {
+      "train": 400
+    },
+    "dion-brutus": {
+      "train": 33
+    },
+    "aratus": {
+      "train": 232
+    },
+    "artaxerxes": {
+      "train": 140
+    },
+    "galba": {
+      "train": 122
+    },
+    "otho": {
+      "train": 84
+    }
+  },
+  "characters": {
+    "grc": 3303015,
+    "eng": 4217490
+  },
+  "vocabulary": {
+    "grc": " (),-.;?·ΐΑΒΓΔΕΖΘΚΛΜΝΞΟΠΣΤΦΧΨάέήίΰαβγδεζηθικλμνξοπρςστυφχψωϊϋόύώἀἁἂἃἄἅἆἇἈἉἌἍἎἐἑἒἓἔἕἘἙἛἜἝἠἡἢἣἤἥἦἧἨἩἬἭἮἰἱἲἳἴἵἶἷἸἹἼἽἾὀὁὂὃὄὅὈὉὋὌὍὐὑὓὔὕὖὗὙὝὠὡὢὣὤὥὦὧὨὩὬὮὰὲὴὶὸὺὼᾀᾂᾄᾅᾆᾐᾑᾔᾕᾖᾗᾠᾤᾦᾧᾳᾴᾶᾷῃῄῆῇῒῖῗῥῦῬῳῴῶῷ—’",
+    "eng": " !\"'(),-.01247:;?ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+  },
+  "longest": {
+    "grc": 923,
+    "eng": 1191
+  }
+}
